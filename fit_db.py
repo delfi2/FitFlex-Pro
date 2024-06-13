@@ -38,7 +38,7 @@ def insert_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie
     return True
 
 
-def delete_ejercicio(ID):  # aca le voy a pasar el isbn del libro que quiero que borre
+def delete_ejercicio(ID):
     db = get_db()
     cursor = db.cursor()
     statement = "DELETE FROM fit WHERE ID = ?"
@@ -47,7 +47,7 @@ def delete_ejercicio(ID):  # aca le voy a pasar el isbn del libro que quiero que
     return True
 
 
-def get_by_id(ID):  # aca le voy a pasar el isbn del libro que quiero que me de
+def get_by_id(ID):
     db = get_db()
     cursor = db.cursor()
     statement = "SELECT ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad FROM fit WHERE ID = ?"
@@ -60,7 +60,7 @@ def get_ejercicios():
     cursor = db.cursor()
     query = "SELECT ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad FROM fit"
     cursor.execute(query)
-    return cursor.fetchall()  # me da todos los libros
+    return cursor.fetchall()  # me da todos los ejercicios
 
 
 def menu():
