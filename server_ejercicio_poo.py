@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/ejercicio', methods=["GET"])
 def get_ejercicio():
-    ejercicios = server_ejercicio_poo.get_ejercicio()
+    ejercicios = ejercicio_controller_poo.get_ejercicio()
     ejercicios_list = []
     for ejercicio in ejercicios:
         elem = ejercicios.serialize()
@@ -25,7 +25,7 @@ def insert_ejercicio():
     fortalece = ejercicio_details["fortalece"]
     serie = ejercicio_details["serie"]
     dificultad = ejercicio_details ["dificultad"]
-    result = server_ejercicio_poo.insert_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
+    result = ejercicio_controller_poo.insert_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
     return jsonify(result)
 
 
@@ -40,19 +40,19 @@ def update_ejercicio():
     fortalece = ejercicio_details["fortalece"]
     serie = ejercicio_details["serie"]
     dificultad = ejercicio_details ["dificultad"]
-    result = server_ejercicio_poo.update_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
+    result = ejercicio_controller_poo.update_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
     return jsonify(result)
 
 
 @app.route("/ejercicio/eliminate/<ID>", methods=["DELETE"])
 def delete_ejercicio(ID):
-    result = server_ejercicio_poo.delete_ejercicio(ID)
+    result = ejercicio_controller_poo.delete_ejercicio(ID)
     return jsonify(result)
 
 
 @app.route("/ejercicio/<ID>", methods=["GET"])
 def get_ejercicio_by_id(ID):
-    ejercicio = server_ejercicio_poo.get_by_id(ID)
+    ejercicio = ejercicio_controller_poo.get_by_id(ID)
     return jsonify(ejercicio)
 
 create_tables()
