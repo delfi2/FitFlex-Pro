@@ -32,7 +32,8 @@ def insert_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie
                      dificultad):  # atributos
     db = get_db()
     cursor = db.cursor()
-    statement = "INSERT INTO fit (ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)     VALUES ( ?, ?, ?, ? ,?, ?, ?, ?)"
+    statement = "INSERT INTO fit (ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad) \
+    VALUES ( ?, ?, ?, ? ,?, ?, ?, ?)"
     cursor.execute(statement, [ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad])
     db.commit()
     return True
