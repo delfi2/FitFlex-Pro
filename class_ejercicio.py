@@ -31,3 +31,5 @@ class ejercicio:
             'dificultad': self.dificultad
         }
 
+
+

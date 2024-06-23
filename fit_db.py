@@ -23,13 +23,13 @@ def create_tables():
             """
     ]
     db = get_db()
-    cursor = db.cursor()
+    cursor = db.cursor() #permite ejecutar comandos
     for table in tables:
         cursor.execute(table)
 
 
 def insert_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie,
-                     dificultad):  # aca le voy a poner los datos
+                     dificultad):  # atributos
     db = get_db()
     cursor = db.cursor()
     statement = "INSERT INTO fit (ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)     VALUES ( ?, ?, ?, ? ,?, ?, ?, ?)"
