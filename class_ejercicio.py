@@ -30,4 +30,5 @@ class ejercicio:
             'serie': self.serie,
             'dificultad': self.dificultad
         }
+        # hola
 
