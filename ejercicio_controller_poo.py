@@ -101,7 +101,7 @@ while flag:
             distancia = input('ingrese la distancia del ejercicio: ')
             tiempo = input('ingrese el tiempo que dura el ejercicio: ')
             result = insert_ejercicio_run(ID, ejercicio, dificultad, distancia, tiempo)
-        if result == True:
+        if result:
             print('ejercicio ingresado correctamente')
             print()
             print()
@@ -112,7 +112,7 @@ while flag:
     elif opcion == 2:
         ID = int(input('ingrese el ID del ejercicio a eliminar: '))
         result = delete_ejercicio(ID)
-        if result == True:
+        if result:
             print('ejercicio eliminado')
             print()
             print()
@@ -120,12 +120,31 @@ while flag:
             print('Error')
             print()
 
+
     elif opcion == 3:
-        tipo_ejercicio = input("Ingrese el tipo de ejercicio - gym/run")
+        tipo_ejercicio = input("Ingrese el tipo de ejercicio - gym/run: ")
         if tipo_ejercicio == "gym":
-            update_ejercicio_gym
+            ID = int(input('ingrese el ID del ejercicio: '))
+            ejercicio = input('ingrese el ejercicio:')
+            dificultad = input('ingrese la dificultad del ejercicio, - principiante; intermedio; avanzado - :')
+            repeticiones = input('ingrese las repeticiones del ejercicio: ')
+            series = int(input('ingrese el numero de series del ejercicio: '))
+            peso = input('ingrese el peso del ejercicio: ')
+            result = update_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, series, peso)
         elif tipo_ejercicio == "run":
-            update_ejercicio_run
+            ID = int(input('ingrese el ID del ejercicio: '))
+            ejercicio = input('ingrese el ejercicio:')
+            dificultad = input('ingrese la dificultad del ejercicio, - principiante; intermedio; avanzado - :')
+            distancia = input('ingrese la distancia del ejercicio: ')
+            tiempo = input('ingrese el tiempo que dura el ejercicio: ')
+            result = update_ejercicio_run(ID, ejercicio, dificultad, distancia, tiempo)
+        if result:
+            print('ejercicio actualizado correctamente')
+            print()
+            print()
+        else:
+            print('Error')
+            print()
 
     elif opcion == 4:
         result = get_ejercicio()  # devuelve una lista de tuplas donde cada tupla es un registro

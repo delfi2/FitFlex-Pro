@@ -23,7 +23,8 @@ def create_tables():
     cursor = db.cursor() #permite ejecutar comandos
 
 
-    table_run = """CREATE TABLE IF NOT EXISTS fit_run( 
+    table_run = """
+        CREATE TABLE IF NOT EXISTS fit_run( 
                 ID INTEGRER PRIMARY KEY,
                 ejercicio TEXT NOT NULL,
                 dificultad TEXT NOT NULL,
