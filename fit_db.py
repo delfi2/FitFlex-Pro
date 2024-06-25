@@ -9,7 +9,7 @@ def get_db():  # devuelve un conector a la base de datos
 
 
 def create_tables():
-    tables = [
+    table_gym = [
         """CREATE TABLE IF NOT EXISTS fit( 
                 ID INTEGRER PRIMARY KEY,
                 ejercicio TEXT NOT NULL,
@@ -22,6 +22,20 @@ def create_tables():
     ]
     db = get_db()
     cursor = db.cursor() #permite ejecutar comandos
+    table_run = [
+        """CREATE TABLE IF NOT EXISTS fit( 
+                ID INTEGRER PRIMARY KEY,
+                ejercicio TEXT NOT NULL,
+                dificultad TEXT NOT NULL,
+                repeticiones INTEGRER NOT NULL,
+                serie INTEGRER NOT NULL, 
+                peso TEXT NOT NULL             
+            )
+            """
+    ]
+    db = get_db()
+    cursor = db.cursor() #permite ejecutar comandos
+    
     for table in tables:
         cursor.execute(table)
 
