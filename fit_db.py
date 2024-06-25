@@ -15,7 +15,7 @@ def create_tables():
                 ejercicio TEXT NOT NULL,
                 dificultad TEXT NOT NULL,
                 repeticiones INTEGRER NOT NULL,
-                serie INTEGRER NOT NULL, 
+                series INTEGRER NOT NULL, 
                 peso TEXT NOT NULL             
             )
         """
@@ -28,7 +28,7 @@ def create_tables():
                 ejercicio TEXT NOT NULL,
                 dificultad TEXT NOT NULL,
                 distancia TEXT NOT NULL,
-                tiempo INTEGRER NOT NULL,       
+                tiempo INTEGRER NOT NULL       
             )
         """
     db = get_db()

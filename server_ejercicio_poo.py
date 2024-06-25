@@ -15,19 +15,27 @@ def get_ejercicio():
     return jsonify(ejercicios_list)
 
 @app.route("/ejercicio/create", methods=["POST"])
-def insert_ejercicio():
+def insert_ejercicio_gym():
     ejercicio_details = request.get_json()
     ID = ejercicio_details["ID"]
     ejercicio = ejercicio_details["ejercicio"]
-    repeticiones =ejercicio_details["repeticiones"]
-    tiempo = ejercicio_details["tiempo"]
+    dificultad = ejercicio_details["dificultad"]
+    repeticiones = ejercicio_details["repeticiones"]
     peso = ejercicio_details["peso"]
-    fortalece = ejercicio_details["fortalece"]
-    serie = ejercicio_details["serie"]
-    dificultad = ejercicio_details ["dificultad"]
-    result = ejercicio_controller_poo.insert_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
+    series = ejercicio_details["series"]
+    result = ejercicio_controller_poo.insert_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, series, peso)
     return jsonify(result)
 
+@app.route("/ejercicio/create", methods=["POST"])
+def insert_ejercicio_run():
+    ejercicio_details = request.get_json()
+    ID = ejercicio_details["ID"]
+    ejercicio = ejercicio_details["ejercicio"]
+    dificultad = ejercicio_details["dificultad"]
+    distancia = ejercicio_details["distancia"]
+    tiempo = ejercicio_details["tiempo"]
+    result = ejercicio_controller_poo.insert_ejercicio_gym(ID, ejercicio, dificultad, distancia, tiempo)
+    return jsonify(result)
 
 @app.route("/ejercicio/gym/modify", methods=["PUT"])
 def update_ejercicio_gym():
