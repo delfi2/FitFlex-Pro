@@ -2,70 +2,69 @@ from fit_db import get_db
 from class_ejercicio import ejercicio
 
 
-def insert_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad):
+def insert_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, series, peso):
     db = get_db()
     cursor = db.cursor()
-    statement = "INSERT INTO fit (ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad) \
-    VALUES ( ?, ?, ?, ? ,?, ?, ?, ?)"
-    cursor.execute(statement, [ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad])
+    statement = "INSERT INTO fit_gym(ID, ejercicio, dificultad, repeticiones, series, peso) \
+    VALUES ( ?, ?, ?, ? ,?, ?)"
+    cursor.execute(statement, [ID, ejercicio, dificultad, repeticiones, series, peso])
     db.commit()
     return True
-
-def update_book(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad):
+def insert_ejercicio_run(ID, ejercicio, dificultad, distancia, tiempo):
     db = get_db()
     cursor = db.cursor()
-    statement = "UPDATE fit SET ejercicio = ?, repeticiones = ?, tiempo= ?, peso= ?, fortalece= ?, number_pages= ?, press= ? WHERE ID = ?"
-    cursor.execute(statement, [ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad, ID])
+    statement = "INSERT INTO fit_run (ID, ejercicio, dificultad, distancia, tiempo) \
+    VALUES ( ?, ?, ?, ? ,?)"
+    cursor.execute(statement, [ID, ejercicio, dificultad, distancia, tiempo])
     db.commit()
     return True
-
+def update_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, series, peso):
+    db = get_db()
+    cursor = db.cursor()
+    statement = "UPDATE fit_gym SET ejercicio = ?, dificultad = ?, repeticiones=, series=, peso= ? WHERE ID = ?"
+    cursor.execute(statement, [ID, ejercicio, dificultad, repeticiones, series, peso])
+    db.commit()
+    return True
+def update_ejercicio_run(ID, ejercicio, dificultad, distancia, tiempo):
+    db = get_db()
+    cursor = db.cursor()
+    statement = "UPDATE fit_run SET ejercicio = ?, dificultad = ?, distancia = ?, tiempo = ? WHERE ID = ?"
+    cursor.execute(statement, [ID, ejercicio, dificultad, distancia, tiempo])
+    db.commit()
+    return True
 
 def delete_ejercicio(ID):
     db = get_db()
     cursor = db.cursor()
-    statement = "DELETE FROM fit WHERE ID = ?"
+    ejercicio_eliminar = input("gym/run: ")
+    if ejercicio_eliminar == "gym":
+        statement = "DELETE FROM ejercicio_gym WHERE ID = ?"
+    elif ejercicio_eliminar == "run":
+        statement = "DELETE FROM ejercicio_run WHERE ID = ?"
+    ID = (input("ID que del ejercicio que desea eliminar:  "))
     cursor.execute(statement, [ID])
     db.commit()
     return True
 
 
-def get_by_id(ID):
+def get_by_id():
     db = get_db()
     cursor = db.cursor()
     statement = "SELECT ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad FROM fit WHERE ID = ?"
     cursor.execute(statement, [ID])
-    single_ejercicio = cursor.fetchone()
-    ID = single_ejercicio[0]
-    ejercicio = single_ejercicio[1]
-    repeticiones = single_ejercicio[2]
-    tiempo = single_ejercicio[3]
-    peso = single_ejercicio[4]
-    fortalece = single_ejercicio[5]
-    serie = single_ejercicio[6]
-    dificultad = single_ejercicio[7]
-    ejercicio = ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
-    return ejercicio.serialize_details()
+    return cursor.fetchone()
 
 
 def get_ejercicio():
     db = get_db()
     cursor = db.cursor()
-    query = "SELECT ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad FROM fit"
+    ejercicio_buscar = input("gym/run")
+    if ejercicio_buscar == "gym":
+        query = "SELECT ID, ejercicio, dificultad, repeticiones, series, peso FROM fit_gym"
+    elif ejercicio_buscar == "run":
+        query = "SELECT ID, ejercicio, dificultad, distancia, tiempo FROM fit_run"
     cursor.execute(query)
-    ejercicio_list = cursor.fetchall()
-    list_of_ejercicios=[]
-    for elem_ejercicio in ejercicio_list:
-        ID = elem_ejercicio[0]
-        ejercicio_nombre = elem_ejercicio[1]
-        repeticiones = elem_ejercicio[2]
-        tiempo = elem_ejercicio[3]
-        peso = elem_ejercicio[4]
-        fortalece = elem_ejercicio[5]
-        serie = elem_ejercicio[6]
-        dificultad = elem_ejercicio[7]
-        ejercicio_to_add = ejercicio(ID, ejercicio_nombre, repeticiones, tiempo, peso, fortalece, serie, dificultad)
-        list_of_ejercicios.append(ejercicio_to_add)
-    return list_of_ejercicios 
+    return cursor.fetchall()
 
 def menu():
     print('******************Menu******************')
@@ -76,7 +75,7 @@ def menu():
     print('ingrese 4 para listar todos los ejercicios')
     print('íngrese 5 para salir del menu')
 
-flag = 0
+flag = True
 while flag:
     menu()
 

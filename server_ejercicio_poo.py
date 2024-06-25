@@ -29,20 +29,27 @@ def insert_ejercicio():
     return jsonify(result)
 
 
-@app.route("/ejercicio/modify", methods=["PUT"])
-def update_ejercicio():
+@app.route("/ejercicio/gym/modify", methods=["PUT"])
+def update_ejercicio_gym():
     ejercicio_details = request.get_json()
     ID = ejercicio_details["ID"]
     ejercicio = ejercicio_details["ejercicio"]
+    dificultad = ejercicio_details["dificultad"]
     repeticiones =ejercicio_details["repeticiones"]
-    tiempo = ejercicio_details["tiempo"]
+    series = ejercicio_details["series"]
     peso = ejercicio_details["peso"]
-    fortalece = ejercicio_details["fortalece"]
-    serie = ejercicio_details["serie"]
-    dificultad = ejercicio_details ["dificultad"]
-    result = ejercicio_controller_poo.update_ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
+    result = ejercicio_controller_poo.update_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, series, peso)
     return jsonify(result)
-
+@app.route("/ejercicio/run/modify", methods=["PUT"])
+def update_ejercicio_run():
+    ejercicio_details = request.get_json()
+    ID = ejercicio_details["ID"]
+    ejercicio = ejercicio_details["ejercicio"]
+    dificultad = ejercicio_details["dificultad"]
+    distancia = ejercicio_details["distancia"]
+    tiempo = ejercicio_details["tiempo"]
+    result = ejercicio_controller_poo.update_ejercicio_gym(ID, ejercicio, dificultad, distancia, tiempo)
+    return jsonify(result)
 
 @app.route("/ejercicio/eliminate/<ID>", methods=["DELETE"])
 def delete_ejercicio(ID):
@@ -55,7 +62,6 @@ def get_ejercicio_by_id(ID):
     ejercicio = ejercicio_controller_poo.get_by_id(ID)
     return jsonify(ejercicio)
 
-create_tables()
 
 if __name__ == '__main__':
     app.run()
