@@ -38,9 +38,9 @@ def delete_ejercicio(ID):
     cursor = db.cursor()
     ejercicio_eliminar = input("gym/run: ")
     if ejercicio_eliminar == "gym":
-        statement = "DELETE FROM ejercicio_gym WHERE ID = ?"
+        statement = "DELETE FROM fit_gym WHERE ID = ?"
     elif ejercicio_eliminar == "run":
-        statement = "DELETE FROM ejercicio_run WHERE ID = ?"
+        statement = "DELETE FROM fit_run WHERE ID = ?"
     ID = (input("ID que del ejercicio que desea eliminar:  "))
     cursor.execute(statement, [ID])
     db.commit()
