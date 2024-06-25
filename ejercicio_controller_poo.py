@@ -54,15 +54,16 @@ def get_ejercicio():
     cursor.execute(query)
     ejercicio_list = cursor.fetchall()
     list_of_ejercicios=[]
-    for ejercicio in ejercicio_list:
-        ID = ejercicio[0]
-        ejercicio = ejercicio[1]
-        repeticiones = ejercicio[2]
-        tiempo = ejercicio[3]
-        peso = ejercicio[4]
-        fortalece = ejercicio[5]
-        serie = ejercicio[6]
-        dificultad = ejercicio[7]
-        ejercicio_to_add = ejercicio(ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad)
+    for elem_ejercicio in ejercicio_list:
+        ID = elem_ejercicio[0]
+        ejercicio_nombre = elem_ejercicio[1]
+        repeticiones = elem_ejercicio[2]
+        tiempo = elem_ejercicio[3]
+        peso = elem_ejercicio[4]
+        fortalece = elem_ejercicio[5]
+        serie = elem_ejercicio[6]
+        dificultad = elem_ejercicio[7]
+        ejercicio_to_add = ejercicio(ID, ejercicio_nombre, repeticiones, tiempo, peso, fortalece, serie, dificultad)
         list_of_ejercicios.append(ejercicio_to_add)
-    return list_of_ejercicios
+    return list_of_ejercicios 
+
