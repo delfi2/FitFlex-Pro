@@ -10,7 +10,7 @@ def get_ejercicio():
     ejercicios = ejercicio_controller_poo.get_ejercicio()
     ejercicios_list = []
     for ejercicio in ejercicios:
-        elem = ejercicios.serialize()
+        elem = ejercicio.serialize()
         ejercicios_list.append(elem)
     return jsonify(ejercicios_list)
 
