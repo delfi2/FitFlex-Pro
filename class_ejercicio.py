@@ -1,13 +1,8 @@
 class ejercicio:
 
-    def __init__(self, ID, ejercicio, repeticiones, tiempo, peso, fortalece, serie, dificultad) -> None:
+    def __init__(self, ID, ejercicio, dificultad) -> None:
         self.ID = ID
         self.ejercicio = ejercicio
-        self.repeticiones = repeticiones
-        self.tiempo = tiempo
-        self.peso = peso
-        self.fortalece = fortalece
-        self.serie = serie
         self.dificultad = dificultad
 
 
@@ -30,6 +25,11 @@ class ejercicio:
             'serie': self.serie,
             'dificultad': self.dificultad
         }
-
-
+class ejercicio_gym:
+     def __init__(self, ID, ejercicio, dificultad, repeticiones, series, peso) -> None:
+         super().__init__(repeticiones, series, peso)
+         self.repeticiones = repeticiones
+         self.series = series
+         self.peso = peso
+    
 
