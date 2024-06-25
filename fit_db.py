@@ -27,9 +27,8 @@ def create_tables():
                 ID INTEGRER PRIMARY KEY,
                 ejercicio TEXT NOT NULL,
                 dificultad TEXT NOT NULL,
-                repeticiones INTEGRER NOT NULL,
-                serie INTEGRER NOT NULL, 
-                peso TEXT NOT NULL             
+                distancia TEXT NOT NULL,
+                tiempo INTEGRER NOT NULL,       
             )
             """
     ]
