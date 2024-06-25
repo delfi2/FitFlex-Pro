@@ -77,14 +77,7 @@ def get_ejercicios():
     return cursor.fetchall()  # me da todos los ejercicios
 
 
-def menu():
-    print('******************Menu******************')
-    print()
-    print('ingrese 1 para agregar un ejercicio a la base de datos')
-    print('ingrese 2 para eliminar un ejercicio de la base de datos')
-    print('ingrese 3 para buscar un ejercicio por su ID')
-    print('ingrese 4 para listar todos los ejercicios')
-    print('íngrese 5 para salir del menu')
+
 
 
 create_tables()
