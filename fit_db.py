@@ -15,7 +15,7 @@ def create_tables():
                 ejercicio TEXT NOT NULL,
                 dificultad TEXT NOT NULL,
                 repeticiones INTEGRER NOT NULL,
-                series INTEGRER NOT NULL, 
+                serie INTEGRER NOT NULL, 
                 peso TEXT NOT NULL             
             )
         """

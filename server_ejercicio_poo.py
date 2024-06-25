@@ -22,8 +22,8 @@ def insert_ejercicio_gym():
     dificultad = ejercicio_details["dificultad"]
     repeticiones = ejercicio_details["repeticiones"]
     peso = ejercicio_details["peso"]
-    series = ejercicio_details["series"]
-    result = ejercicio_controller_poo.insert_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, series, peso)
+    serie = ejercicio_details["serie"]
+    result = ejercicio_controller_poo.insert_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, serie, peso)
     return jsonify(result)
 
 @app.route("/ejercicio/create", methods=["POST"])
@@ -44,9 +44,9 @@ def update_ejercicio_gym():
     ejercicio = ejercicio_details["ejercicio"]
     dificultad = ejercicio_details["dificultad"]
     repeticiones =ejercicio_details["repeticiones"]
-    series = ejercicio_details["series"]
+    serie = ejercicio_details["serie"]
     peso = ejercicio_details["peso"]
-    result = ejercicio_controller_poo.update_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, series, peso)
+    result = ejercicio_controller_poo.update_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, serie, peso)
     return jsonify(result)
 @app.route("/ejercicio/run/modify", methods=["PUT"])
 def update_ejercicio_run():
