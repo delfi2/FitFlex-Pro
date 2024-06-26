@@ -4,6 +4,9 @@ from fit_db import create_tables  # Importa la base de datos
 
 app = Flask(__name__)
 
+@app.route('/')
+def saludo():
+    return 'Bienvenido a ~FitFlex_Pro~'
 @app.route('/ejercicio', methods=["GET"])
 def get_ejercicio():
     ejercicios = ejercicio_controller_poo.get_ejercicio()

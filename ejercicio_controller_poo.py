@@ -150,14 +150,14 @@ while flag:
             print()
 
     elif opcion == 4:
-        result = get_ejercicio()  # devuelve una lista de tuplas donde cada tupla es un registro
+        result = get_ejercicio()  # nos devuelve una lista de tuplas donde cada tupla es un registro
         print(result)
         print()
         print()
 
     elif opcion == 5:
         ID = int(input('ingrese el ID del ejercicio a buscar: '))
-        result = get_by_id(ID)  # devuelve una tupla con el registro
+        result = get_by_id(ID)  # nos devuelve una tupla con el registro
         print(result)
         print()
         print()
