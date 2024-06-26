@@ -1,5 +1,5 @@
 from fit_db import get_db
-from class_ejercicio import ejercicio as Ejercicio
+from class_ejercicio import ejercicios as Ejercicio
 
 
 def insert_ejercicio_gym(ID, ejercicio, dificultad, repeticiones, serie, peso):
