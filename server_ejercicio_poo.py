@@ -64,7 +64,6 @@ def delete_ejercicio(ID):
     result = ejercicio_controller_poo.delete_ejercicio(ID)
     return jsonify(result)
 
-
 @app.route("/ejercicio/<ID>", methods=["GET"])
 def get_ejercicio_by_id(ID):
     ejercicio = ejercicio_controller_poo.get_by_id(ID)
