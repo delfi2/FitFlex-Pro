@@ -4,7 +4,7 @@ class ejercicios:
         self.ejercicio = ejercicio
         self.dificultad = dificultad
 
-    def describir(self):
+    def __describir(self):
         return f"Ejercicio: {self.ejercicio}, Dificultad: {self.dificultad}"
 
 class EjercicioGym(ejercicios):
@@ -14,7 +14,7 @@ class EjercicioGym(ejercicios):
         self.serie = serie
         self.peso = peso
 
-    def describir(self):
+    def __describir(self):
         descripcion_base = super().describir()
         return f"{descripcion_base}, Repeticiones: {self.repeticiones}, Serie: {self.serie}, Peso: {self.peso}kg"
 
@@ -24,7 +24,7 @@ class EjercicioRun(ejercicios):
         self.distancia = distancia
         self.tiempo = tiempo
 
-    def describir(self):
+    def __describir(self):
         descripcion_base = super().describir()
         return f"{descripcion_base}, Distancia: {self.distancia}km, Tiempo: {self.tiempo}min"
 
