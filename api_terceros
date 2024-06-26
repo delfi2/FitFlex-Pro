@@ -1,9 +1,9 @@
+import json
 import requests
-response = requests.get('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=precipitation_probability_mean')
-status_code = response.status_code
-if status_code == 200:
-  json = response.json()
-  status = json['status']
-  print('Status', status)
-else:
-  print('Erorr en la solicitud')
+
+def get_lluvia():
+    url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=precipitation'
+    r = requests.get(url)
+    data=json.loads(r.text)
+    lluvia = data['current']['precipitation']
+    return lluvia
