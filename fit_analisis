@@ -1,0 +1,44 @@
+import sqlite3
+import pandas as pd
+
+# Nombre de la base de datos
+DATABASE_NAME = "fit.db"
+
+# Función para exportar una tabla a CSV
+def export_table_to_csv(table_name, csv_filename):
+    # Conectar a la base de datos
+    conn = sqlite3.connect(DATABASE_NAME)
+    
+    # Leer la tabla en un DataFrame de pandas
+    df = pd.read_sql_query(f"SELECT * FROM {table_name}", conn)
+    
+    # Exportar el DataFrame a un archivo CSV
+    df.to_csv(csv_filename, index=False)
+    
+    # Cerrar la conexión
+    conn.close()
+
+# Exportar la tabla fit_gym a un archivo CSV
+export_table_to_csv('fit_gym', 'fit_gym.csv')
+
+# Exportar la tabla fit_run a un archivo CSV
+export_table_to_csv('fit_run', 'fit_run.csv')
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+
+df=pd.read_csv('fit_run.csv')
+df.head()
+df.describe()
+df['ejercicio'].value_counts() # contar la cantidad de ejercicios
+df['tiempo'].value_count()/dfshape[0]*100 #porcentaje de tiempo que tiene cada ejercicio?
+
+mask = df['tiempo'] >= 20 # nos quedamos con las filas cuyo es mayor a 20
+df_mas_20_tiempo = df[mask]
+df_mas_20_tiempo
+
+# Armado de dataframes:
+
