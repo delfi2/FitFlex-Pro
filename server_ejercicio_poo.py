@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import ejercicio_controller_poo  # Importa el controlador
+from apiter import get_lluvia
 from fit_db import create_tables  # Importa la base de datos
 
 app = Flask(__name__)
