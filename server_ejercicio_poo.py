@@ -80,7 +80,17 @@ def update_ejercicio_run():
 def delete_ejercicio(ID):
     result = ejercicio_controller_poo.delete_ejercicio(ID)
     return jsonify(result)
-
+    
+@app.route('/ejercicio/<int:ID>/lluvia', methods = ['GET'])
+def get_run_lluvia(ID):
+    elegir = get_ejercicio_by_id(ID)
+    if elegir == []:
+        return jsonify(status=400, description="Valor no valido para (" + ID + ")"), 400
+    if ID != 0:
+        lluvia = get_lluvia()
+        result = lluvia
+    return jsonify(result)
+    
 if __name__ == '__main__':
-    create_tables()  # Asegúrate de crear las tablas si no existen
+    create_tables()  # crea las tablas si no existen
     app.run()
