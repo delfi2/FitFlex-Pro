@@ -1,3 +1,8 @@
 ID,ejercicio,dificultad,distancia,tiempo
-67,trote,principiante,6km,30min
 1, correr,avanzado,15.0,80
+3,trote,principiante,6.0,30
+4,caminata rapida,principiante,5.0,45
+8,cuestas,avanzado,6.0,55
+9,carrera larga,avanzado,13.0,85
+21,carrera continua,intermedio,7.0,35
+28,fartlek,intermedio,7.0,45
